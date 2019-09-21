@@ -8,11 +8,13 @@
 	author: Jevgenijus Cistiakovas
 */
 
-template<class T>
+// A simple generic Binary Search Tree
+template<typename T>
 class BST
 {
 public:
-	Tree() = default;
+	BST() = default;
+	BST(TreeNode<T> node) : root_(node) {}
 	void insertNode(T val);
 	// returns nullptr if not found
 	TreeNode<T>* search(T val);
