@@ -21,6 +21,8 @@ public:
 	bool isEmpty();
 	bool contains(T val);
 	TreeNode<T>* lca(T val1, T val2);
+	// Use this for easier nesting such as lca(a,lca(b,c)
+	TreeNode<T>* lca(T val1, TreeNode<T>* val2_ptr);
 private:
 	TreeNode<T>* root_;
 };
