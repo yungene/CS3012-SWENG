@@ -1,6 +1,8 @@
 #include "gtest/gtest.h"
-#include "..//bst.h"
 #include "..//tree_node.h"
+#include "..//bst.h"
+
+// author: Jevgenijus Cistiakovas
 
 namespace {
 
