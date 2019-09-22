@@ -1,16 +1,14 @@
 #pragma once
 
-/*
-	author: Jevgenijus Cistiakovas
-*/
+// author: Jevgenijus Cistiakovas
 
 template<typename T>
-class Tree;
+class BST;
 
 template<typename T>
 class TreeNode {
-	friend class Tree<T>;
-public:
+  friend class BST<T>;
+ public:
 	TreeNode(T data) :
 		data_(data), left_(nullptr), right_(nullptr){}
 	T getData() {
