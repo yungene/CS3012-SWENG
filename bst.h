@@ -22,8 +22,16 @@ class BST {
 
  private:
   TreeNode<T>* root_;
+
+  struct lcaResult {
+    TreeNode<T>* result = nullptr;
+    bool seen_val1 = false;
+    bool seen_val2 = false;
+  };
+
   TreeNode<T>* searchUtil(TreeNode<T>* root, T val);
   TreeNode<T>* insertUtil(TreeNode<T>* root, T val);
+  typename BST<T>::lcaResult lcaUtil(TreeNode<T>* root, T val1, T val2);
 };
 
 template <typename T>
@@ -85,7 +93,42 @@ bool BST<T>::contains(T val) {
 
 template <typename T>
 TreeNode<T>* BST<T>::lca(T val1, T val2) {
-  return nullptr;
+  auto res = lcaUtil(root_, val1, val2);
+  return res.result;
+}
+
+template <typename T>
+typename BST<T>::lcaResult BST<T>::lcaUtil(TreeNode<T>* root, T val1, T val2) {
+  struct BST<T>::lcaResult res;
+  if (!root) {
+    return res;
+  }
+  T data = root->getData();
+  if (data == val1) {
+    res.seen_val1 = true;
+  }
+  if (data == val2) {
+    res.seen_val2 = true;
+  }
+  if (res.seen_val1 && res.seen_val2) {
+    res.result = root;
+    return res;
+  }
+  auto left_res = lcaUtil(root->left_, val1, val2);
+  auto right_res = lcaUtil(root->right_, val1, val2);
+  if (left_res.result) {
+    return left_res;
+  }
+  if (right_res.result) {
+    return right_res;
+  }
+  res.seen_val1 |= left_res.seen_val1 || right_res.seen_val1;
+  res.seen_val2 |= left_res.seen_val2 || right_res.seen_val2;
+
+  if (res.seen_val1 && res.seen_val2) {
+    res.result = root;
+  }
+  return res;
 }
 
 template <typename T>

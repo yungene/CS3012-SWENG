@@ -42,11 +42,6 @@ TEST(BstTest, LcaTest1) {
   bst.insertNode(30);
   bst.insertNode(1);
 
-  TreeNode<int>* result_node;
-  result_node = bst.lca(15, 20);
-  ASSERT_FALSE(result_node == nullptr);
-  EXPECT_EQ(result_node->getData(), 20);
-
   EXPECT_EQ(bst.lca(15, 20)->getData(), 20);
   EXPECT_EQ(bst.lca(15, 15)->getData(), 15);
   EXPECT_EQ(bst.lca(1, 30)->getData(), 10);
@@ -91,7 +86,7 @@ TEST(BstTest, LinkedListLcaTest) {
   EXPECT_EQ(bst.lca(10, 10)->getData(), 10);
   EXPECT_EQ(bst.lca(10, 20)->getData(), 10);
   EXPECT_EQ(bst.lca(10, 30)->getData(), 10);
-  EXPECT_EQ(bst.lca(10, 40)->getData(), 40);
+  EXPECT_EQ(bst.lca(10, 40)->getData(), 10);
   EXPECT_EQ(bst.lca(30, 40)->getData(), 30);
 }
 
