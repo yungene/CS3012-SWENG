@@ -133,5 +133,8 @@ typename BST<T>::lcaResult BST<T>::lcaUtil(TreeNode<T>* root, T val1, T val2) {
 
 template <typename T>
 TreeNode<T>* BST<T>::lca(T val1, TreeNode<T>* val2_ptr) {
-  return nullptr;
+  if (!val2_ptr) {
+    return val2_ptr;
+  }
+  return lca(val1, val2_ptr->getData());
 }
