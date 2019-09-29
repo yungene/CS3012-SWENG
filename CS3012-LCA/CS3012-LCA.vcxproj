@@ -130,7 +130,6 @@
     <ClInclude Include="tree_node.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bst.cpp" />
     <ClCompile Include="lca_main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bst_lca_test.cpp" />
+    <ClCompile Include="graph_lca_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CS3012-LCA.vcxproj">
@@ -77,7 +78,8 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <ImportLibrary>C:\CodeRepository\CPP\source\repos\CS3012-LCA\x64\Debug\CS3012-LCA.lib</ImportLibrary>
+      <ImportLibrary>
+      </ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

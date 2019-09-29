@@ -23,9 +23,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bst.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="lca_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
