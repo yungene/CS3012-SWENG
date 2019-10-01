@@ -37,7 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bst_lca_test.cpp" />
-    <ClCompile Include="graph_lca_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CS3012-LCA.vcxproj">
