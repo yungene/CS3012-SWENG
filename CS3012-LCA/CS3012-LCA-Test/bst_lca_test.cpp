@@ -19,6 +19,7 @@ TEST(BstTest, BasicInsertSearchTest) {
   EXPECT_FALSE(bst.isEmpty());
   bst.insertNode(5);
   bst.insertNode(20);
+  bst.insertNode(20);
   bst.insertNode(15);
   bst.insertNode(30);
   bst.insertNode(1);
@@ -126,6 +127,7 @@ TEST(BstTest, LcaNestingTest) {
   bst.insertNode(1);
 
   // lca of 15,30,20 is 20
+  EXPECT_EQ(bst.lca(15, bst.lca(10, -10)), nullptr);
   EXPECT_EQ(bst.lca(15, bst.lca(30, 20))->getData(), 20);
   EXPECT_EQ(bst.lca(1, bst.lca(15, 30))->getData(), 10);
   EXPECT_EQ(bst.lca(1, bst.lca(5, 30))->getData(), 10);

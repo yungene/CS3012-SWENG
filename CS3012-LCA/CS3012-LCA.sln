@@ -7,6 +7,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CS3012-LCA", "CS3012-LCA.vc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CS3012-LCA-Test", "CS3012-LCA-Test\CS3012-LCA-Test.vcxproj", "{A59363AD-9445-40CD-94DD-94292ECA65F7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38B7717F-6534-4753-8A78-FC3B9CEED9C1}"
+	ProjectSection(SolutionItems) = preProject
+		CS3012-LCA.gta.runsettings = CS3012-LCA.gta.runsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

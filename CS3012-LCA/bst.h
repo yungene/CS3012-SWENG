@@ -4,7 +4,7 @@
 
 // author: Jevgenijus Cistiakovas
 
-// A simple generic Binary Search Tree
+// A simple generic Binary Search Tree.
 // TODO(j.cistiakovas): Add documentation.
 template <typename T>
 class BST {
@@ -16,8 +16,14 @@ class BST {
   TreeNode<T>* search(T val);
   bool isEmpty();
   bool contains(T val);
+  // Definition: 
+  //   For nodes u and v of tree T , query lca(u, v) returns 
+  //   the lowest common ancestor of u and v in T, that is,
+  //   it returns the node farthest from the root that is 
+  //   an ancestor of both u and v, where node is also defined
+  //   to be an ancestor of itself, i.e. lca(u,u) = u.
   TreeNode<T>* lca(T val1, T val2);
-  // Use this for easier nesting such as lca(a,lca(b,c))
+  // Use this for easier nesting such as lca(a,lca(b,c)).
   TreeNode<T>* lca(T val1, TreeNode<T>* val2_ptr);
 
  private:
