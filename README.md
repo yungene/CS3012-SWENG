@@ -1,15 +1,33 @@
 # CS3012 - Software Engineering @ TCD 2019/2020
 
-## Part 1 - simple LCA
+## LCA - Lowest Common Ancestor [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
-In this part a simple binary search tree class is implemented that supports an lca query.
+### Part 1 - simple LCA
 
-Lca is defined as follow: _For nodes u and v of tree T , query lca(u, v) returns the lowest common ancestor of u and v in T, that is, it returns the node farthest from the root that is an ancestor of both u and v, where node is also defined to be an ancestor of itself, i.e. lca(u,u) = u_
+In this part a simple binary search tree class is implemented that supports an LCA query.
+
+LCA is defined as follow: _For nodes u and v of tree T , query lca(u, v) returns the lowest common ancestor of u and v in T, that is, it returns the node farthest from the root that is an ancestor of both u and v, where node is also defined to be an ancestor of itself, i.e. lca(u,u) = u._
 
 Definition is taken from Bender et al. (2005) _"Lowest common ancestors in trees and directed acyclic graphs"_.
 
-[TreeNode class](/CS3012-LCA/tree_node.h)
+Quick links:
 
-[BST class](/CS3012-LCA/bst.h)
+* [TreeNode class](/CS3012-LCA/tree_node.h)
 
-[Unit test for BST](/CS3012-LCA/CS3012-LCA-Test/bst_lca_test.cpp)
+* [BST class](/CS3012-LCA/bst.h)
+
+* [Unit test for BST](/CS3012-LCA/CS3012-LCA-Test/bst_lca_test.cpp)
+
+### Part 2 - LCA for DAG
+
+In this part, functionality of LCA query is extended to support DAGs.
+
+LCA for DAGs is defines as follows: _An LCA w of nodes u and v in a DAG is an ancestor of both u and v where w has no descendants that are also ancestors of both u and v. Note: assume lca(x,x) = x, i.e. lca is reflexive._
+
+As for part 1, definition is taken from Bender et al. (2005) _"Lowest common ancestors in trees and directed acyclic graphs"_.
+
+Quick links:
+
+* [Graph class](/CS3012-LCA/graph.h)
+
+* [Unit test for graph](/CS3012-LCA/CS3012-LCA-Test/graph_test.cpp)
