@@ -30,11 +30,15 @@ class Graph {
   class Vertex;
 
   typename std::map<T, Vertex> vertex_set_;
-  static constexpr int kWhite = 0;
-  static constexpr int kGrey = 1;
-  static constexpr int kBlack = 2;
+  static constexpr int kWhite = 1<<0;
+  static constexpr int kGrey = 1<<1;
+  static constexpr int kBlack = 1<<2;
+  static constexpr int kYellow = 1<<3;
+  static constexpr int kBlue = 1<<4;
+  static constexpr int kGreen = kYellow|kBlue;
 
-  bool isDagUtil(T val);
+  bool isDagUtil(T const& val);
+  void ancestorUtil(T const& val, int colour);
 
   class Edge {
     friend class Graph;
@@ -118,7 +122,7 @@ inline bool Graph<T>::isDag() {
 // TODO(cistiakj): Consider passing by pointer, as copying for
 // arbitrary object can be expensive.
 template <typename T>
-inline bool Graph<T>::isDagUtil(T val) {
+inline bool Graph<T>::isDagUtil(T const& val) {
   auto& u = vertex_set_[val];
   u.colour_ = kGrey;
 
@@ -144,14 +148,56 @@ inline bool Graph<T>::isEmpty() {
 
 template <typename T>
 inline std::vector<T> Graph<T>::lca(T const& u, T const& v) {
-  return std::vector<T>();
+  if (!isDag()) {
+    return std::vector<T>();
+  }
+  // mark all vertices white
+  for (auto& pair : vertex_set_) {
+    pair.second.colour_ = 0;
+  }
+  ancestorUtil(u,kYellow);
+  ancestorUtil(v,kBlue);
+  std::vector<T> lca;
+  for (auto& pair : vertex_set_) {
+    if (pair.second.colour_ != kGreen) {
+      continue;
+    }
+    bool is_lca = true;
+    for (auto& out_edge : pair.second.out_edges_) {
+      auto& dest = vertex_set_[out_edge.dest_];
+      if (dest.colour_ == kGreen) {
+        is_lca = false;
+        break;
+      }
+    }
+    if (is_lca) {
+      lca.push_back(pair.first);
+    }
+  }
+  return lca;
 }
 
+template <typename T>
+inline void Graph<T>::ancestorUtil(T const& val, int colour) {
+  if (vertex_set_.find(val) == vertex_set_.end()) {
+    return;
+  }
+  auto& u = vertex_set_[val];
+  u.colour_ = u.colour_ | colour;
+
+  for (auto& edge : u.in_edges_) {
+    // check for back-edge
+    auto& v = vertex_set_[edge.src_];
+    if ((v.colour_&colour) == 0) {
+      ancestorUtil(edge.src_, colour);
+    }
+  }
+}
 
 template <typename T>
 inline void Graph<T>::Vertex::addInEdge(Edge e) {
   for (auto& ee : in_edges_) {
-    if (e == e) {
+    if (e == ee) {
       // Edge already exists
       return;
     }
@@ -162,7 +208,7 @@ inline void Graph<T>::Vertex::addInEdge(Edge e) {
 template <typename T>
 inline void Graph<T>::Vertex::addOutEdge(Edge e) {
   for (auto& ee : out_edges_) {
-    if (e == e) {
+    if (e == ee) {
       // Edge already exists
       return;
     }
