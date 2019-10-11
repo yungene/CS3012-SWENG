@@ -1,0 +1,179 @@
+%%
+% Template for Assignment Reports
+% 
+%
+
+\documentclass[11pt]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx,color}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{float}
+%\usepackage[strings]{underscore}
+\usepackage{url}
+
+% Margins
+%\topmargin=-0.45in
+%\evensidemargin=0in
+%\oddsidemargin=0in
+\textwidth=6.5in
+%\textheight=9.0in
+%\headsep=0.25in 
+%\linespread{1.0} % Line spacing
+
+%%------------------------------------------------
+%% Image and Listing code
+%%------------------------------------------------
+%% Examples for the commands in the document below
+%%
+%% includecode:
+%% \includecode{caption for table of listings}{caption for reader}{filename}
+%% - includes a file with code and adds a caption that should describe the code in some detail and a shorter caption for the table of listings
+\newcommand{\includecode}[4]{\lstinputlisting[float,floatplacement=H, caption={[#1]#2}, captionpos=b, frame=single, label={#3}]{#4}}
+
+
+%% includescalefigure:
+%% \includescalefigure{label}{short caption}{long caption}{scale}{filename}
+%% - includes a figure with a given label, a short caption for the table of contents and a longer caption that describes the figure in some detail and a scale factor 'scale'
+\newcommand{\includescalefigure}[5]{
+\begin{figure}[htb]
+\centering
+\includegraphics[width=#4\linewidth]{#5}
+\captionsetup{width=.8\linewidth} 
+\caption[#2]{#3}
+\label{#1}
+\end{figure}
+}
+
+%% includefigure:
+%% \includefigure{label}{short caption}{long caption}{filename}
+%% - includes a figure with a given label, a short caption for the table of contents and a longer caption that describes the figure in some detail
+\newcommand{\includefigure}[4]{
+\begin{figure}[htb]
+\centering
+\includegraphics{#4}
+\captionsetup{width=.8\linewidth} 
+\caption[#2]{#3}
+\label{#1}
+\end{figure}
+}
+
+
+%%------------------------------------------------
+%% Parameters
+%%------------------------------------------------
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\authorName} % Top left header
+\rhead{\moduleCode\ - \shortAssignmentTitle} % Top center header
+%\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\newcommand{\assignmentTitle}{Assignment\ \#3: Biography of an influential software engineer} % Assignment title
+\newcommand{\shortAssignmentTitle}{Assignment\ \#3: Biography} % Assignment title
+\newcommand{\moduleCode}{CS3012} 
+\newcommand{\moduleName}{Software\ Engineering} 
+\newcommand{\authorName}{Jevgenijus\ Cistiakovas} % Your name ***EDIT HERE***
+\newcommand{\authorID}{Std\# 17325426} % Your student ID ***EDIT HERE***
+\newcommand{\reportDate}{\printDate}
+
+
+%%------------------------------------------------
+%%	Title Page
+%%------------------------------------------------
+\title{
+\vspace{-1in}
+\begin{figure}[!ht]
+\flushleft
+\includegraphics[width=0.4\linewidth]{reduced-trinity.png}
+\end{figure}
+\vspace{-0.5cm}
+\hrulefill \\
+\vspace{0.5cm}
+\textmd{\textbf{\moduleCode\ \moduleName}}\\
+\textmd{\textbf{\assignmentTitle}}\\
+\vspace{0.5cm}
+\hrulefill \\
+}
+\author{\textbf{\authorName,\ \authorID}}
+\date{\today}
+
+
+%%------------------------------------------------
+%% Document
+%%------------------------------------------------
+\begin{document}
+%% Defaults for listings
+\lstset{language=Java, captionpos=b, frame=single}
+\captionsetup{width=.8\linewidth} 
+
+\maketitle
+\tableofcontents
+\vspace{0.5in}
+
+%% We will skip a couple of components of reports such as abstracts, literature review, etc for the reports on assignments.
+%%------------------------------------------------
+\section{Introduction}
+\label{sec:Intro}
+This document is a biographical essay of a key software engineer. In particular, the subject of this biography is \textbf{Howard G. "Ward" Cunningham} - an American software engineer who developed the first wiki - a Web-based  software  application  that  allows  users  to  collaboratively  contribute  and  edit  articles  on  various  topics.\cite{cs-encyclopedia} He also pioneered in design patterns and extensively contributed to the field of programming methods, including the use of design patterns that became known as "extreme programming".
+ 
+\section{Howard G. "Ward" Cunningham - Biography}
+\subsection{Early life}
+\par
+Born on may 26, 1949, in Indiana, Cunningham grew up in an era before the Internet. He was however fully engaged with amateur radio - the next-best communications medium of that era. In particular, he was fascinated by the creativity of global community that gathered around the ham radio. Cunningham learned to program in high school, which had a special program to provide students access to mainframe computers at the Illinois Institute of Technology.\cite{wiki-revolution}\cite{innovators} He then attended Purdue University, where he received a bachelor’s degree in electrical engineering and computer  science  and  then  a  master’s  in  computer  science. After  graduation  Cunningham  worked  as  a  researcher  in microcomputer  systems  for  Tektronix. \cite{cs-encyclopedia}
+\subsection{Wiki}
+\par 
+At Tektronix, Cunningham was assigned to keep track of projects, a task similar to what Berners-Lee faced when he went to CERN. To do this he modified a superb software product developed by one of Apple’s most enchanting innovators, Bill Atkinson. It was called HyperCard, and it allowed users to make their own hyperlinked cards and documents on their computers. Apple had little idea what to do with the software, so at Atkinson’s insistence Apple gave it away free with its computers.\cite{innovators}
+\par
+Using  HyperCard,  Cunningham  built  an  application  that allowed  users  to  add  free-form  data  to  a  database  and  link it  to  other  entries  by  clicking  a  button.  Users  who  tried  it were fascinated by its potential. Cunningham then wanted to  expand  it  so  users  could  access  it  over  networks.\cite{cs-encyclopedia}  However,  he  was  unable  to  develop  a  networked  version  of  his HyperCard application. One colleague suggested using the World Wide Web, and he created an Internet version of his HyperText program, writing it in just a few hundred lines of Perl code. The result was a new content management application that allowed users to edit and contribute to a Web page. Cunningham used the application to build a service, called the Portland Pattern Repository, that allowed software developers to exchange programming ideas and improve on the patterns that others had posted.\cite{innovators} As any tool, it needed a name. At first he thought of calling it QuickWeb. He  then  remembered  hearing  the  phrase wiki wiki or “quickly, quickly”) in Hawaii, and he decided to call his system wikiwikiWeb. Today, it is just known as a wiki.\cite{cs-encyclopedia}
+\par 
+WardsWiki (as it became known) allowed anyone to edit and contribute, without even needing a password. Previous versions of each page would be stored, in case someone botched one up, and there would be a “Recent Changes” page so that Cunningham and others could keep track of the edits. But there would be no supervisor or gatekeeper preapproving the changes. It would work, he said with cheery midwestern optimism, because “people are generally good.” It was just what Berners-Lee had envisioned, a Web that was read-write rather than read-only. “Wikis were one of the things that allowed collaboration,” Berners-Lee said. “Blogs were another.”\cite{innovators}
+\subsection{Wikipedia}
+\par
+Like Berners-Lee, Cunningham made his basic software available for anyone to modify and use. Consequently, there were soon scores of wiki sites as well as open-source improvements to his software. But the wiki concept was not widely known beyond software engineers until January 2001, when Wikipedia was lauched by Kimmy Wales and Larry Sanger.\cite{innovators}\cite{wiki-wikipedia}
+
+Wikipedia became to Web content what GNU/Linux was to software: a peer-to-peer commons collaboratively created and maintained by volunteers who worked for the civic satisfactions they found. It was a delightful, counterintuitive concept, perfectly suited to the philosophy, attitude, and technology of the Internet. Anyone could edit a page, and the results would show up instantly.\cite{innovators}
+
+\subsection{Design Patterns}
+Ward Cunningham has contributed to the practice of object-oriented programming, in particular the use of pattern languages and (with Kent Beck) the class-responsibility-collaboration cards. He also contributes to the extreme programming software development methodology. Much of this work was done collaboratively on the first wiki site. Cunningham is also an important figure in Agile movement. As a key figure in extreme programming he was one of the seventeen reputable software engineers that came up with a \textit{Manifesto for Agile Software Development}. The Manifesto played an important role in popularizing the Agile approach to software development. \cite{agile-manifesto}\cite{wiki-cunningham}
+\subsection{Open Source}
+\par
+Cunningham was and is an important figure in Open Source. He never patented his main creation - wiki. Instead he made the wiki software open and available to everyone. He was happy to see  Wales and Sanger adapting his software for such an ambitious project as Wikipedia.\cite{innovators}
+Cunningham worked for a few years on open-source projects at Microsoft. Later he held the position of Director of Committer Community Development at the Eclipse Foundation - a non-rpofit organisation that oversees development of an open-source development environment Eclipse.
+\subsection{Present}
+As Cunningham  \& Cunningham  Inc., Ward and  his  wife consult people in the are of object oriented programming.
+
+\section{Discussion}
+Ward Cunningham is undoubtedly a influential figure in software engineering, who is unfortunately not well known by the people outside of software engineering. Despite having being a user of wikis and Eclipse for long time and knowing about extreme programming and design patterns, I only learned about Ward Cunningham as one of the authors of the Agile Manifesto. The fact that I have used, learnt about and practised his inventions and ideas was a direct indicator to me of how influential person he is.
+What fascinates me in Ward Cunningham is that unlike many of software engineers he was never driven by financial gain. His main creation - wiki - .
+People like Cunningham should be examples for generations of new software engineers
+
+
+A key principle of Wikipedia was that articles should have a neutral point of view.
+%% -Wiki
+%% -Agile manifesto
+%% -Extreme programming
+%% -Eclipse foundation
+%% -Design patterns
+
+\section{Sources}
+Most of the information about the life of Ward Cunningham and history of wiki is taken from \cite{innovators} \cite{wiki-revolution} \cite{cs-encyclopedia} as well as from the Wikipedia website.
+
+%\bibliographystyle{apalike2}
+\bibliographystyle{plain}
+\bibliography{sources} 
+
+\end{document}
+
