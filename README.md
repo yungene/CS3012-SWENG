@@ -2,6 +2,11 @@
 
 ## LCA - Lowest Common Ancestor [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
+### Prerequisites
+
+This project is developed using Visual Studio 2019. Google Test including Google Mock is used as a testing framework. Thus to run the project Google Test and Google Mock need to be installed. The easiest way is to install a [gmock NuGet package](https://www.nuget.org/packages/gmock/). 
+The project can also be successfully ran in Visual Studio 2017. However, it might be necessary to change a platform toolset to one of VS2017 as well as to retarget solution.
+
 ### Part 1 - simple LCA
 
 In this part a simple binary search tree class is implemented that supports an LCA query.
