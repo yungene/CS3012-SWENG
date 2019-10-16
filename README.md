@@ -22,3 +22,13 @@ Quick links:
 * [BST class](/CS3012-LCA/bst.h)
 
 * [Unit test for BST](/CS3012-LCA/CS3012-LCA-Test/bst_lca_test.cpp)
+
+## Biography of an influential software engineer
+
+Subject: Howard G. "Ward" Cunningham.
+
+Development branch: _feature--biography-essay_.
+
+Quick links:
+
+* [Essay PDF](/biography-essay/biography-essay.pdf)
