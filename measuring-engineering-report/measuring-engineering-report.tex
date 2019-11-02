@@ -1,0 +1,276 @@
+%%
+% Template for Assignment Reports
+% 
+%
+
+\documentclass[11pt]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx,color}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{float}
+%\usepackage[strings]{underscore}
+\usepackage{url}
+
+% Margins
+%\topmargin=-0.45in
+%\evensidemargin=0in
+%\oddsidemargin=0in
+\textwidth=6.5in
+%\textheight=9.0in
+%\headsep=0.25in 
+%\linespread{1.0} % Line spacing
+
+%%------------------------------------------------
+%% Image and Listing code
+%%------------------------------------------------
+%% Examples for the commands in the document below
+%%
+%% includecode:
+%% \includecode{caption for table of listings}{caption for reader}{filename}
+%% - includes a file with code and adds a caption that should describe the code in some detail and a shorter caption for the table of listings
+\newcommand{\includecode}[4]{\lstinputlisting[float,floatplacement=H, caption={[#1]#2}, captionpos=b, frame=single, label={#3}]{#4}}
+
+
+%% includescalefigure:
+%% \includescalefigure{label}{short caption}{long caption}{scale}{filename}
+%% - includes a figure with a given label, a short caption for the table of contents and a longer caption that describes the figure in some detail and a scale factor 'scale'
+\newcommand{\includescalefigure}[5]{
+\begin{figure}[htb]
+\centering
+\includegraphics[width=#4\linewidth]{#5}
+\captionsetup{width=.8\linewidth} 
+\caption[#2]{#3}
+\label{#1}
+\end{figure}
+}
+
+%% includefigure:
+%% \includefigure{label}{short caption}{long caption}{filename}
+%% - includes a figure with a given label, a short caption for the table of contents and a longer caption that describes the figure in some detail
+\newcommand{\includefigure}[4]{
+\begin{figure}[htb]
+\centering
+\includegraphics{#4}
+\captionsetup{width=.8\linewidth} 
+\caption[#2]{#3}
+\label{#1}
+\end{figure}
+}
+
+
+%%------------------------------------------------
+%% Parameters
+%%------------------------------------------------
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\authorName} % Top left header
+\rhead{\moduleCode\ - \shortAssignmentTitle} % Top center header
+%\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\newcommand{\assignmentTitle}{Assignment\ \#4:Measuring Software Engineering} % Assignment title
+\newcommand{\shortAssignmentTitle}{Assignment\ \#4:Measuring Engineering} % Assignment title
+\newcommand{\moduleCode}{CS3012} 
+\newcommand{\moduleName}{Software\ Engineering} 
+\newcommand{\authorName}{Jevgenijus\ Cistiakovas} % Your name ***EDIT HERE***
+\newcommand{\authorID}{Std\# 17325426} % Your student ID ***EDIT HERE***
+\newcommand{\reportDate}{\printDate}
+
+
+%%------------------------------------------------
+%%	Title Page
+%%------------------------------------------------
+\title{
+\vspace{-1in}
+\begin{figure}[!ht]
+\flushleft
+\includegraphics[width=0.4\linewidth]{reduced-trinity.png}
+\end{figure}
+\vspace{-0.5cm}
+\hrulefill \\
+\vspace{0.5cm}
+\textmd{\textbf{\moduleCode\ \moduleName}}\\
+\textmd{\textbf{\assignmentTitle}}\\
+\vspace{0.5cm}
+\hrulefill \\
+}
+\author{\textbf{\authorName,\ \authorID}}
+\date{\today}
+
+
+%%------------------------------------------------
+%% Document
+%%------------------------------------------------
+\begin{document}
+%% Defaults for listings
+\lstset{language=Java, captionpos=b, frame=single}
+\captionsetup{width=.8\linewidth} 
+
+\maketitle
+\tableofcontents
+\vspace{0.5in}
+
+%% We will skip a couple of components of reports such as abstracts, literature review, etc for the reports on assignments.
+%%------------------------------------------------
+\section{Introduction}
+\label{sec:Intro}
+Software metrics are considered a vital part of software engineering.\cite{ieee-measurement-programs} Given that software industry is still full of productivity and quality issues, software measurements are seen as necessary means that can aid in analysing and improving software processes. In particular, software measurements provide support for planning, monitoring, controlling and evaluating the software process.\cite{Briand:2002:OPG:630832.631301} 
+
+Software measurement is an active area of research with books and articles being published. However, the methods developed by researchers and methods actually used within software industry can widely differ. It is important to consider the both the academic methods as well as commercial solutions available.
+
+Agile development methods are becoming the new norm in software industry.\cite{TARHAN2014477}\cite{hp-agile-report} It is therefore important to consider the metrics and methods that measure Agile Software Development.
+
+This report talks about the different ways software process can be measured in Measurable Data\ref{sec:Methods}. It examines some popular solutions available for gathering and analysing data in software development in Tools Available\ref{sec:Platforms}. Some metrics are examined in more formal details in Algorithmic Approaches\ref{sec:Algortihms}. Finally, the ethical side of collecting and using metrics to help with decision making is discussed in Ethics\ref{sec:Ethics}. As a whole this report presents the independent research done as a part of CS3012 Software Engineering module at Trinity College Dublin.
+
+A software metric is defined as method of quantitatively determining the extent to which software process, product, or project possesses a certain attribute. This does not only include the formula used for determining a metric value, but also the methods for presenting and interpreting it.\cite{Daskalantonakis:1992:PVS:141344.141353}
+\section{Measurable Data}
+\label{sec:Methods}
+%% Perhaps talk about metrics to measure agile process as agile is big now
+%% SOmething simple sucha s lines of code or deferct count
+Software measurement can be said to consist of measurements of products, processes and resources.\cite{Fenton:2014:SMR:2700539} Examples of external(higher level) attributes would be quality, complexity and maintainability for product; quality, cost-effectiveness and stability for process; productivity, reliability for resources. All those higher level metrics are built upon lower level metrics such as maintainability would built on modularity of code base.
+
+This section considers different attributes that can be measured, methods that can be used to measure them and the usage of this metric to define useful and perhaps more higher level metrics.
+
+\subsection{Size}
+One of the most obvious and simplest metrics as well as one of the most popular property to measure is software size. Measuring the size of software is straightforward if a relatively simple measure is used. It should be noted however that size can only indicate how much of an entity is present, it cannot directly tell how much effort and cost was or need to be put in, or how productive really the developers were. Size is nevertheless still a useful metric as it can be used to predict such attributes as development time and resources, it is also commonly used as a component for computing indirect metrics such as for measuring bug density.
+Overall, size is a useful metric that can be used as a base for deriving other attributes. Size is commonly used for normalization as it is commonly viewed that many other metrics scale in a predictable manner as the size of the program grows. It is not unreasonable to suggest that bigger program might take longer time to write and might have more bugs in it than program of a smaller size. At the same time developers and managers need to be careful when basing their assumptions as relations between attributes are not always as simple as it might seem to be.
+The subsections below consider mainly the methods of measuring size of a product rather than a process as every products inherently has a size than can be measured.
+\subsubsection{Code Size - LOC}
+\par
+Back in the early days of computing, the size of a computer program used to be determined by the number of punched cards used to record the program.\cite{conte-et-al-1986} Now that the programs are stored on hard disks, an equivalent measure could be the number of bytes needed to store the program, but perhaps a better choice would be lines of code(LOC) metric. Being probably one of the oldest and most debatable metrics, it is still used due to its dangerous simplicity and ease of calculation. It has been known for a long time now that measuring LOC comes with a lot of questions and issues.\cite{conte-et-al-1986} Firstly, it is obvious that not all of the lines of code are the same. It is common for among programmers to use blank lines to make code more readable in their opinion. Blank lines are of little interest to those interested in real size of the program. Similarly, it is considered a good practice to generously document the code. Unlike blank lines, comment lines require at least some effort to write, but perhaps not as much effort as the actual code. A common solution is either discard comments at all or to give code and comment lines different weight when calculating LOC. Even if agreement is achieved on those basic issues, there come another issues related to different programming languages having different verbosity as well as different requirements for separating code into lines. For example what in "pretty written" Java would take 20 lines of code with multiple for loops, can be often expressed as a single list comprehension in Python. What LOC tells in this case is that code in Java probably took longer to type. This cannot tell which code was easier to write for developer. The metric is also highly dependent on a style used by the developers. For example, Google's style guide for C++ requires all lines to be shorter than 80 character for their internal reasons.\cite{google-cpp-style-guide} It would be perhaps unreasonable to set such a requirement for a new style guide. As a result, this leads to inability to compare the same metric between different companies and projects.
+\par
+The choice of how to count LOC should always be based on how the metric is to be used. It is sometimes desirable to count comment lines and code lines separately to then find a comment density and try to correlate it with the quality of code written. Other times, it is preferred to measure only the number of executable statements in the final code. While it misses all the helper code written during development such as prototypes and internal tools, it would be a good size metric for a final product. It is also common to differentiate between the new code developed, code that was reused such as for example standard libraries, code that was partially reused.
+\par
+An alternative to LOC as a code size metric is token count that was defined by Maurice Halstead. He defines a length of a program to be the sum of total number of occurrences of operators plus total occurrences of operands, where for example operands are variables and operators are arithmetic symbols or command names such as WHILE. Using the count of operators and operands, Halstead also other derived metrics such as program level, programming effort, program difficulty, etc.
+Code size and LOC is a perfect example of how carefully metrics and methods to be used need to be studied as even such a seemingly simple metric as code size can have many aspects to it.
+
+%% talk about web porgrmas
+% use instructions, use token
+\subsubsection{Design size}
+Before any software is written, it is necessary being designed. Designing software is a long and complex process that takes a lot of effort. In the standard waterfall model of development process, a design is fully developed before any software is written. Thus design size together with design complexity can serve as an indicator for approximating the amount of effort required for development of the product. Measuring design or requirements size usually comes from the methodology used for design. If object oriented approach and UML diagrams are used then size can derived from the number of classes, objects, interfaces and associations present as well as the number of different design patterns used. During use case design and analysis, the number of use cases can be used as a size measure. For agile, the number of user user stories can be used. All these methods of measuring size can be of high value within a single project, but due to different methodologies and styles used, it becomes problematic to compare design size of different projects between different organizations.
+
+\subsubsection{Functionality Size}
+%% maybe git commit to determine size?
+Many software engineers argue that the amount of business functionality in a product best expresses the size of the product. 
+Back in 1979 Allan Albrecht at IBM defined function points (FPs) as a unit of measure of amount of functionality. THis approach measures the functionality of specification documents, but can also be applied at a later stage of product's size to refine the size estimate and thus the cost or productivity estimate. The advantage of FPs is that they are generally independent of the specification model or technique used. The number of of FPs is defines as a product of unadjusted function point count(UFC) and Technical complexity factor (TCF): \[ FP = UFC \times TCF\]
+Where UFC is computed as a weighted sum of items of different variety. The items can of the following types\cite{LEUNG-2001}:
+\begin{enumerate}
+	\item External input types: data or control input items provided by the user.
+	\item External output types: output data types to the user.
+	\item External inquiry types: interactive inputs requiring a response.
+	\item External file types: files that are passed or shared between the system and other systems.
+	\item Internal file types: files that are used and shared inside the system.
+\end{enumerate}
+Each of there items is assigned a subjective "complexity": simple, average, or complex. Then, a weight is assigned based on both type and complexity level varying from 3 (for simple external input) to 15 (for complex external file).
+UFC is then: \[UFC=\sum_{i=1}^{15} \text{(Number of items of variety i)} \times (weight_i) \]
+TFC is a sum of 14 differently weighted factors such as whether the product needs to accommodate for performance or reusability, etc.
+\par
+The advantage of FP measurement is that it can be obtained based on the system requirements in the early stage of software development. FPs is a well understood and studied method. The notion of FPs for object-oriented software by introducing object points that can be computed directly from class diagram. 
+\par
+FPs and UFC can also be used to estimate the code size.
+\par
+It has been claimed that function point analysis is hard to do properly and is unnecessarily complex is used for resource estimation.\cite{Fenton:1999:SMS:329632.329641} Despite having many limitations, it has been used in practice for many years, in particular it has been used to report progress and define payment in contracts as well as for estimating the cost of development and complexity of the product.
+\subsection{Measuring Structure}
+%% no of paths in a state graph
+While size is an important internal attribute of software product, there are other useful internal attributes. One of such attribute is structure. Structure in part can be separated into control flow structure such as the order in which instructions are executed, and data flow structure such as how data is handled by the program.\cite{Fenton:2014:SMR:2700539} Briand et al.\cite{Briand:1996} defines properties of such structural attributes as length, complexity, cohesion and coupling. Attributes such as complexity are of high interest to engineers and managers as potentially cost estimates can be derived from complexity. Properties such as cohesion which assesses the tightness with which related program features are "grouped together" in systems or modules\cite{Briand:1996}, and coupling which captures the amount of relationship between the elements belonging to different modules\cite{Briand:1996} can be potentially used to define such higher level attributes as maintainability and testability of product.
+\par 
+It is common to view the structure of a software product as a directed graph resembling the DFA nature of software and computers. Looking at a program in terms of its control flow graph allows to more formally analyse and derive more formal ways to measure it. In particular, McCabe proposed the cyclomatic number of a program's flowgraph as a measure of program complexity. The McCabe's cyclomatic number measure the number of linearly independent paths through the program. The cyclomatic number is defined as follows:\[ \text{Cyclomatic complexity of flowgraph F is }v(F)=e-n+2\] with \textit{e} being the number edges, \textit{n} being number of nodes. The claim is that the higher the number the more complex is the code.  Cyclomatic number definition is also defined for workgraph sequencing and workgraph nesting to allow for bottom calculation for complex control graphs. Unlike with LOC measure, with cyclomatic number it is not obvious why the claim holds true. It does however follow all the properties of complexity measure as described by Briand et al.\cite{Briand:1996} One important property is that the complexity of a system is not less than the sum of the complexities of any of its two independent sub parts which matches to some extent the intuitive model of complexity.
+\par 
+Applications of McCabe's cyclomatic complexity include limiting complexity during development by setting a limit to the allowed cyclomatic number. It can also be used to estimate the required effort for writing tests.
+The limitation of cyclomatic complexity is that the original paper is vague on some details of the metric and hence different tools might report different cyclomatic number for the same code. 
+\subsection{Measuring External Attributes}
+The principal goal of software engineering is to develop high quality software effectively. The most important metric for a software product is thus quality. 
+\par 
+Boehm et al. and McCall et al. described quality as being composed of many different components. Examples of some important quality factors would be reliability, maintainability, usability, testability and efficiency. Those quality factors are in turn composed of different criteria that can be measured. Some of these factors can be calculated using the static metrics described in preceding sections. For example, testability can be derived from a cyclomatic number. Maintainability can be derived from a modularity static metric. Maintainability on the other hand is related to the process of maintaining the product, hence it is best calculated from the measures of the process such as effectiveness of the process of maintaining a product.
+\par 
+Decomposing quality metric into many components and then trying to correctly calculate metric for each component requires a lot of time and effort. Often rough and approximate measures are sufficient. One measurement that is universally used is number of defects, where defect means a known error, fault, or failure. Quality of the product can then be obtained from defect density which is defined as follows \[\text{Defect density}=\frac{\text{Number of known defects}}{\text{Product size}}\]
+Defect density is defined in terms of size. Therefore all the issues and limitations related to measuring product size as describes previously in Methods section(\ref*{sec:Methods}) are also transferred to defect density. Similarly to how there are different size in code, there exist  different types of defects. It is necessary to differentiate between pre-release faults, detecting of which indicates good testability and good testing process as well as perhaps lack of quality from the developers, ad between post-release faults. With post-release fault density it is also important to differentiate between defect found by customers and defects found internally. Any commercial company would want to minimize the fault density related to customer. Lastly, defects can have different effect - not all faults lead to software failures. Some minor defect might never be noticed by the users.
+
+\subsection{Measuring Process - Agile Approach}
+The measures described above mainly concerned with measuring attributes of a product. It is often also desirable to measure the state of development process that can directly affect the cost and time needed for development and maintenance of a product. This section will look at how and what process can be measured. In particular, it will focus on agile development as it is currently dominating development process. However, it was reported that the use of metrics in Agile software development is similar to Traditional software development.\cite{Kupiainen:2015:UMA:2784072.2784627}
+\par 
+The most popular factor agile teams are interested in measuring are velocity, effort estimation accuracy, testing performance and code quality.
+\par
+Velocity measures the amount of work done with respect to time. Issues' velocity measures capability of a team to complete issues planned for a sprint. One metric that can be usedis number of issues completed during the sprint. Knowledge of velocity helps to assess and improve planning, to identify bottlenecks.\cite{Agile-case-study-finland} The change of velocity over time is also important. New teams can expect to see increase in their velocity as team members develop relationships and become accustomed to work process.
+In order to get more insight into the reasons behind velocity, it it worthwhile to look into development speed. A significant factor that affect development speed is time it takes for commit to be reviewed. An agile team should strive to minimize time it takes for commit to be integrated as often a developer can be blocked waiting for that commit to be reviewed. If it takes long to review a commit, it is a significant sign for a manager as it might mean anything from team being too busy to knowledge not being properly shared within a team.
+\par 
+Testing is an integral part of agile development process. As mentioned previously, testing efforts can be estimated statically. Agile teams are also interested in measuring testing process. For example, testing performance can be measured by means of such metrics as unit test duration, average time to fix an error, average number of iterations in cod review phase.
+\par 
+It is important to note that measures concerned with process usually concern with time as unlike a product, a process is a continuous process in which time determines cost.
+
+\subsection{Measuring developers}
+The engine behind software development is of course developers. All the attributes defining each individual developer such as quality and productivity in the optimistic scenario contribute to the overall quality and efficiency of process and product.
+
+An interesting observation is that while agile practices become more widely used and 
+%%\section{Algorithmic Approaches}
+%%\label{sec:Algortihms}
+
+\section{Tools Available}
+\label{sec:Platforms}
+Developing solution to gather and analyse metrics takes developers time and thus introduces overhead. Therefore, there appeared companies that specialise in developing and providing generic solutions to measuring software process. Such measurement programs and services are an important source of control over cost and quality of development process within software organisations.\cite{ieee-measurement-programs} Therefore, it is important to consider the popular public products available as they in part determine the general direction of the practical measurement in software industry.
+%%\par 
+%%This section considers different platforms and tools available. For each tool the aspect considered are: %%platform's selling point, offerings available, unique features, price,  
+
+\subsection{Git Analytics Tools}
+\par
+Many tools available on the market can be described as Git analytics tools. They also call themselves as Engineering Intelligence tools. 
+These tools such as GitPrime or Velocity by Code Climate work by monitoring and analysing git repositories. All the platforms include such natural git metrics as activity counts and averages. For example, the number of pushes per day for each engineer/team/repository. The main way the platforms try to attract customers is by providing more advanced metrics such as measuring individual's impact, productivity, rework as well as providing ways of visualizing this data. Such advanced metrics are usually computed by proprietary algorithms.
+\subsubsection{GitPrime}
+As they describe themselves, GitPrime is an organizational tool, pioneering a different way of measuring and communicating about productivity in software engineering. GitPrime has "Git" in its name for a reason. The platform operates by watching customer's git repository and retrieving useful metrics that are then presented to the customer in a more visual manner. The platform initially worked of only data from git, but now it works with many services providing git repositories such as GitHub or BitBucket. 
+\par 
+Compared to Velocity, GirPrime puts more focus on individual engineers. For example, it allows to measure efficiency of engineer submitting code using such aspects as responsiveness, number of comments addresses, receptiveness and number of preview pull requests. SImilarly, it measures engineers reviewing code using such metrics as time it takes reviewer to first comment on a new pull request, or influence - whether comments get addressed by the submitter.
+\par 
+Overall, the key analytics provided by GirPrime are:
+\begin{itemize}
+	\item Impact - Impact of a change is based on the relative difficulty of the change as determined by their algorithm.
+	\item Churn - Churn measures the amount of rework. A lot of rework can be a sign that a developer is stuck. It also represents a potentially wasted effort.
+	\item tt100 Productive - It is time in hours required to write a hundred lines of code after churn. GitPrime claims that over time this metric is a good indicator of productivity.
+\end{itemize}
+\subsubsection{Velocity by Code Climate}
+The tool is focused mainly of pull requests (PR). Therefore their tool works of both source-code level data as well as collaborative work data. Velocity provides different metrics about pull requests. For example, its review cycle metric calculates the number of times a PR goes back and forth between the reviewer and the contributor. They claim this can help in identifying bottleneck PRs. Velocity provides detailed metrics about both: individual engineers and team as well as about each individual pull request. Velocity puts more emphasis on collaboration and provides a lot of metrics related to code review process and pull requests' related details.
+%%\subsubsection{Stackify}
+%%\subsection{Waydev}
+%%Waydev is another software development analytics tool. In particular, it is a Git analytics tool
+\subsection{Estimancy}
+Estimancy claims to be "The first AI-based software solution for Enterprise Application Outsourcing Management and Software Spend Estimation". Estimancy provide a service of estimating the software size to develop based on requirement specifications in natural language. Estimancy provides a Microsoft Word extension that can process a specification written in natural language and automatically detect units of work, and after user's approval estimates can be calculated.
+\subsection{Polyspace by Mathworks}
+Polyspace is a family of product by famous company MathWorks that is a developer of Matlab. Polyspace is a static code analysis tool that uses formal methods to prove the absence of critical run-time error in source code for C, C++, and Ada programming languages. Polyspace family consist of two products: Code Prover and Bug Finder.
+Polyspace products allow the user to generate different software metrics such as
+\begin{itemize}
+	\item Comment density of a source file
+	\item Cyclomatic complexity
+	\item Number of lines, parameters, call levels, etc. in a function
+	\item Identified run-time errors in the software
+\end{itemize}
+
+\subsection{Codacy}
+Codacy is an automated code analysis/quality tool. In other words, Codacy is a hosted automated code review service. 
+Codacy automatically applies static analysis code patterns to a project and grades it so a customer can take a first glance of its health. Codacy reports back the impact in code quality for every commit or pull request: new issues introduced, code coverage, code duplication or code complexity. It also provides suggestions on how code can be improved. Codacy supports Git as the only source mode management technology. It however support many programming languages including Scala, Java, PHP, Python, etc. An interesting feature of Cadacity is that it also look for security issues in the code. Security is an important attribute defining quality of a product.
+\subsection{Tools - Conclusion}
+In conclusion, 
+\section{Ethics}
+\label{sec:Ethics}
+%% intrusive, security vulnerabilities, data,
+
+\section{Conclusion}
+\label{sec:Conclusion}
+
+%\bibliographystyle{apalike2}
+\bibliographystyle{plain}
+\bibliography{sources} 
+
+\end{document}
+
