@@ -129,13 +129,14 @@
 \label{sec:Intro}
 Software metrics are considered a vital part of software engineering.\cite{ieee-measurement-programs} Given that software industry is still full of productivity and quality issues, software measurements are seen as necessary means that can aid in analysing and improving software processes. In particular, software measurements provide support for planning, monitoring, controlling and evaluating the software process.\cite{Briand:2002:OPG:630832.631301} 
 
+A software metric is defined as method of quantitatively determining the extent to which software process, product, or project possesses a certain attribute. This does not only include the formula used for determining a metric value, but also the methods for presenting and interpreting it.\cite{Daskalantonakis:1992:PVS:141344.141353} In particular, commercial tools put a lot of emphasis on presenting rather simple metrics in a sophisticated way that allow the customers to better interpret the results.
+
 Software measurement is an active area of research with books and articles being published. However, the methods developed by researchers and methods actually used within software industry can widely differ. It is important to consider the both the academic methods as well as commercial solutions available.
 
-Agile development methods are becoming the new norm in software industry.\cite{TARHAN2014477}\cite{hp-agile-report} It is therefore important to consider the metrics and methods that measure Agile Software Development.
+Agile development methods are becoming the new norm in software industry.\cite{TARHAN2014477}\cite{hp-agile-report} It is therefore important to consider the metrics and methods that measure Agile Software Development process.
 
-This report talks about the different ways software process can be measured in Measurable Data\ref{sec:Methods}. It examines some popular solutions available for gathering and analysing data in software development in Tools Available\ref{sec:Platforms}. Some metrics are examined in more formal details in Algorithmic Approaches\ref{sec:Algortihms}. Finally, the ethical side of collecting and using metrics to help with decision making is discussed in Ethics\ref{sec:Ethics}. As a whole this report presents the independent research done as a part of CS3012 Software Engineering module at Trinity College Dublin.
+This report talks about the different ways software process can be measured in Measurable Data\ref{sec:Methods}. It examines some popular solutions available for gathering and analysing data in software development in Tools Available\ref{sec:Platforms}.Finally, the ethical side of collecting and using metrics to help with decision making is discussed in Ethics\ref{sec:Ethics}. As a whole this report presents the independent research done as a part of CS3012 Software Engineering module at Trinity College Dublin.
 
-A software metric is defined as method of quantitatively determining the extent to which software process, product, or project possesses a certain attribute. This does not only include the formula used for determining a metric value, but also the methods for presenting and interpreting it.\cite{Daskalantonakis:1992:PVS:141344.141353}
 \section{Measurable Data}
 \label{sec:Methods}
 %% Perhaps talk about metrics to measure agile process as agile is big now
@@ -200,21 +201,46 @@ Decomposing quality metric into many components and then trying to correctly cal
 Defect density is defined in terms of size. Therefore all the issues and limitations related to measuring product size as describes previously in Methods section(\ref*{sec:Methods}) are also transferred to defect density. Similarly to how there are different size in code, there exist  different types of defects. It is necessary to differentiate between pre-release faults, detecting of which indicates good testability and good testing process as well as perhaps lack of quality from the developers, ad between post-release faults. With post-release fault density it is also important to differentiate between defect found by customers and defects found internally. Any commercial company would want to minimize the fault density related to customer. Lastly, defects can have different effect - not all faults lead to software failures. Some minor defect might never be noticed by the users.
 
 \subsection{Measuring Process - Agile Approach}
+\label{sec:Mesuring-Process}
 The measures described above mainly concerned with measuring attributes of a product. It is often also desirable to measure the state of development process that can directly affect the cost and time needed for development and maintenance of a product. This section will look at how and what process can be measured. In particular, it will focus on agile development as it is currently dominating development process. However, it was reported that the use of metrics in Agile software development is similar to Traditional software development.\cite{Kupiainen:2015:UMA:2784072.2784627}
 \par 
 The most popular factor agile teams are interested in measuring are velocity, effort estimation accuracy, testing performance and code quality.
 \par
-Velocity measures the amount of work done with respect to time. Issues' velocity measures capability of a team to complete issues planned for a sprint. One metric that can be usedis number of issues completed during the sprint. Knowledge of velocity helps to assess and improve planning, to identify bottlenecks.\cite{Agile-case-study-finland} The change of velocity over time is also important. New teams can expect to see increase in their velocity as team members develop relationships and become accustomed to work process.
+Velocity measures the amount of work done with respect to time. Issues' velocity measures capability of a team to complete issues planned for a sprint. One metric that can be used is number of issues completed during the sprint. Knowledge of velocity helps to assess and improve planning, to identify bottlenecks.\cite{Agile-case-study-finland} The change of velocity over time is also important. New teams can expect to see increase in their velocity as team members develop relationships and become accustomed to work process.
 In order to get more insight into the reasons behind velocity, it it worthwhile to look into development speed. A significant factor that affect development speed is time it takes for commit to be reviewed. An agile team should strive to minimize time it takes for commit to be integrated as often a developer can be blocked waiting for that commit to be reviewed. If it takes long to review a commit, it is a significant sign for a manager as it might mean anything from team being too busy to knowledge not being properly shared within a team.
 \par 
-Testing is an integral part of agile development process. As mentioned previously, testing efforts can be estimated statically. Agile teams are also interested in measuring testing process. For example, testing performance can be measured by means of such metrics as unit test duration, average time to fix an error, average number of iterations in cod review phase.
+Testing is an integral part of agile development process. As mentioned previously, testing efforts can be estimated statically. Agile teams are also interested in measuring testing process. For example, testing performance can be measured by means of such metrics as unit test duration, average time to fix an error, average number of iterations in code review phase.
 \par 
 It is important to note that measures concerned with process usually concern with time as unlike a product, a process is a continuous process in which time determines cost.
 
 \subsection{Measuring developers}
-The engine behind software development is of course developers. All the attributes defining each individual developer such as quality and productivity in the optimistic scenario contribute to the overall quality and efficiency of process and product.
+The engine behind software development is developers. All the attributes defining each individual developer such as quality and productivity in the optimistic scenario contribute to the overall quality and efficiency of process and product. 
+\par 
+The choice of metric to measure depends on the goal the measurement is trying to achieve. One of the reasons to measure software engineers is economical - that is the goal is to identify the strong and weak performers. In a commercial world developer needs to necessary bring value to the company. If a developer is determined to not perform to the set standards, then the company needs to look into it. Often the outcome is that a developer gets sacked from the job. Knowing the strong performers within the team is also of great use to the company, as it might decide to promote the talents to higher position. A large company with a big number of teams could benefit from ensuring that all the teams are of similar performance level. High performers can be asked to join weaker teams to bring them to the average standard. The work of the manager is of course not just finding low performers and asking them to leave the company, the key to the work of manager is to ensure that the team is performing to the full potential. In this case, a trend is of more use that an atomic metric - for example the change in productivity and quality of a developer. Once a manager detects a worrying trend, he/she can then look talk to the developer and look into lower level metrics in an attempt to identify the cause of the change. For example, a drop in quality might indicate that a developer is under the pressure of deadline or is stressed.
+\par
+While metrics are of the greatest use for managers of the teams, there are also helpful for regular developers. One use case is for example that developer can use metrics as records of his/her work .
+\par 
+The reasons described are not unique to software development. There are mostly universal across the market. The details on how the software engineers can be measured, of what constitutes to a happy, healthy and well performing developers is what is unique to this field. 
+\par 
+There are many low level metrics that can be measured about an individual developer. Essentially, every action performed by a developer on a computer can be recorded and used to define a metric. For example, this includes such metrics as lines of code written/modified by the engineer as well as number of emails sent to colleagues or the complexity change caused by the engineer's change in the codebase. These lower level metrics are used to measure higher level attributes such as overall quality of work done or productivity.
 
-An interesting observation is that while agile practices become more widely used and 
+%%This section focuses on two key attributes of a developer - productivity and impact. 
+\par 
+Productivity is normally defined, from an economic view, as the effectiveness of productive effort.\cite{Oliveira:2017} Productivity can be measured as a single ratio of metrics. For example, as a ratio of \textit{Work Size/Effort} where work size can be measured in lines of code or Function points, and effort can be measured in terms of time and cost. This productivity metric essentially measures the productivity of a developer in developing the product. The productivity metric suffers from the same issues as each component within the ratio. It relies upon the ability of work size metric to correctly capture the amount of work done by the engineer taking into account factors such as complexity of the work done, importance of the work done, impact of the work done, quality of the work done.
+
+%% talk about how all previous metrics are used to measure productivity, impact
+%% then talk about some state-of-the-art approaches such as using biometric sensors
+\par 
+The metrics considered previously were measuring the actions done by a developer. However, a developer is a human and its biological parameters can be measured. As argued by Marieke van Vugt et al. 2019 in \cite{Vugt2019}, biometric sensors can potentially be used to measure productivity. As it has been noted, measuring productivity correctly is hard. Productivity in the field of software development requires sometimes singular focus, and sometimes distraction.\cite{Vugt2019}. Vugt provides examples of some of the biometric measures that can be used. These include measuring pupil size, hearth-rate variability, and EEG. All these metrics provide some information on the person's attention state. However, with software engineering requiring more than mechanical concentration on a single thing, these metrics cannot be used a single source of productivity measure. Biometric sensors can nevertheless be useful for the developer as they aid in identifying distractions and low productivity periods. Knowing when a developer is the least concentrated, can help the colleagues to decide whether to interrupt his/her or not. Developers should strive to reduce the amount or interruption and distraction during a high concentration period as it has direct consequences on the productivity.
+
+\par 
+While measuring each individual software engineer might be of a good help to manager, for example in identifying when a particular person needs help, or as a proof of high/low job performance by an employee, the software is normally developed in team, and productivity of a team is of greater importance that productivity of a single team member. For example, the productivity of a senior developer might drop as he/she is dealing with teaching skills or knowledge to junior developers to help junior developer to be independently productive. The overall productivity of the team will probably increase in the long-term\cite{Ko2019}
+
+\par 
+Overall, there are many ways and methods of how individual software engineers can be measured ranging from LOC to pupil size. The challenge is in interpreting the results correctly and appreciating the fact that no metric is fully correct. 
+%% Despite software engineers being an essential part of any software project, with respect to productivity, researchers have been mostly looking at the ways it could be measured for a software project rather than an individual developer. In contrast, some of the popular commercial measurement tools available put a lot of emphasis on measuring the productivity of developers. 
+
+
 %%\section{Algorithmic Approaches}
 %%\label{sec:Algortihms}
 
@@ -231,7 +257,7 @@ These tools such as GitPrime or Velocity by Code Climate work by monitoring and 
 \subsubsection{GitPrime}
 As they describe themselves, GitPrime is an organizational tool, pioneering a different way of measuring and communicating about productivity in software engineering. GitPrime has "Git" in its name for a reason. The platform operates by watching customer's git repository and retrieving useful metrics that are then presented to the customer in a more visual manner. The platform initially worked of only data from git, but now it works with many services providing git repositories such as GitHub or BitBucket. 
 \par 
-Compared to Velocity, GirPrime puts more focus on individual engineers. For example, it allows to measure efficiency of engineer submitting code using such aspects as responsiveness, number of comments addresses, receptiveness and number of preview pull requests. SImilarly, it measures engineers reviewing code using such metrics as time it takes reviewer to first comment on a new pull request, or influence - whether comments get addressed by the submitter.
+Compared to Velocity, GirPrime puts more focus on individual engineers. For example, it allows to measure efficiency of engineer submitting code using such aspects as responsiveness, number of comments addresses, receptiveness and number of preview pull requests. Similarly, it measures engineers reviewing code using such metrics as time it takes reviewer to first comment on a new pull request, or influence - whether comments get addressed by the submitter.
 \par 
 Overall, the key analytics provided by GirPrime are:
 \begin{itemize}
@@ -261,9 +287,21 @@ Codacy is an automated code analysis/quality tool. In other words, Codacy is a h
 Codacy automatically applies static analysis code patterns to a project and grades it so a customer can take a first glance of its health. Codacy reports back the impact in code quality for every commit or pull request: new issues introduced, code coverage, code duplication or code complexity. It also provides suggestions on how code can be improved. Codacy supports Git as the only source mode management technology. It however support many programming languages including Scala, Java, PHP, Python, etc. An interesting feature of Cadacity is that it also look for security issues in the code. Security is an important attribute defining quality of a product.
 \subsection{Tools - Conclusion}
 In conclusion, 
+
+%% Talk about risks of using dashboard that are very popular
+
+
 \section{Ethics}
 \label{sec:Ethics}
+%% Internal veruss 3rd party
+%% measures need trust
+%% MEasures can be hacked to get bigger salary. Look for correlation. 
 %% intrusive, security vulnerabilities, data,
+%% stakeholders interest
+
+%% For example, rumination may involve repeated thinking that “I am worthless, I am a failure,” supplemented by recall of experiences, such as a poor evaluation of a piece of work you delivered.
+
+
 
 \section{Conclusion}
 \label{sec:Conclusion}
