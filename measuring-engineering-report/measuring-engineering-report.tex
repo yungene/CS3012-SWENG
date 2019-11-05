@@ -285,8 +285,8 @@ Polyspace products allow the user to generate different software metrics such as
 \subsection{Codacy}
 Codacy is an automated code analysis/quality tool. In other words, Codacy is a hosted automated code review service. 
 Codacy automatically applies static analysis code patterns to a project and grades it so a customer can take a first glance of its health. Codacy reports back the impact in code quality for every commit or pull request: new issues introduced, code coverage, code duplication or code complexity. It also provides suggestions on how code can be improved. Codacy supports Git as the only source mode management technology. It however support many programming languages including Scala, Java, PHP, Python, etc. An interesting feature of Cadacity is that it also look for security issues in the code. Security is an important attribute defining quality of a product.
-\subsection{Tools - Conclusion}
-In conclusion, 
+%%\subsection{Tools - Conclusion}
+%%In conclusion, 
 
 %% Talk about risks of using dashboard that are very popular
 
@@ -301,17 +301,21 @@ In conclusion,
 
 %% For example, rumination may involve repeated thinking that “I am worthless, I am a failure,” supplemented by recall of experiences, such as a poor evaluation of a piece of work you delivered.
 
-Based on a large number of publications in the area of software measurement and also based on this report, it can be said that measuring software is a challenging problem.
-
-Metrics by themselves do not usually have any ethical issues. The main ethical questions are raised when considering the methods used to collect data, the nature of the data collected and the way those metrics are later used. 
-
-Software engineers do not like to be measured. 
-Often software engineers appreciate the value metrics can bring.
-Engineers do not like if metrics about them are publicly available and are used by other people. This brings up the issue of trust. Metrics are capturing personal information and people do not trust other people to see it. It raises even more issues when such personal information can be used to make decisions that can negatively affect the person being measured. For example, a person might be asked to leave the company due to his/her productivity metric being below the norm. 
-
+Based on a large number of publications in the area of software measurement and also based on the informations presented in this report, it can be said that measuring software is indeed a challenging problem. The complexity of the issue adds to an opinion that some aspects of measurements in software engineering are unethical.
+Metrics by themselves do not usually have any ethical issues, unless they reveal very personal information. The main ethical questions are raised when considering the methods used to collect data, the nature of the data collected and the way those metrics are later used. 
+Collection of data and nature of data raises ethical questions such as what data and to what extent can an employer collect data about its employees, and how transparent does the company needs to be about the data it is collecting. While collecting the LOC of commits submitted poses no ethical issues, collection of biometric data such as person's posture or hearth rate is more controversial. Software engineers do not like to be measured, so the solution might be to not disclose the fact they are being measured to them. This is not a viable solution and will only lead to loss of trust. Trust is very important when talking about measurement of developers. Often software engineers do appreciate the value metrics such history as periods of high concentration or methodologies such as personal software process can bring. The problem comes with this information being used by the others that the person do not trust. While the goal of measurement is to quantify the interested attribute to allow for objective decision making, there is still an issue of whether the metric captures all the details to allow for objective presentation. It is argued that metrics should be used only for triggering and initiating a more qualitative research into the issue as certain details cannot be correctly quantified.\cite{rethinking_productivity}
+\par 
 When considering third party services used for measurement, the issue of trust becomes more acute. It is more than trust between two people, it is now trust between two organisations. The company has to rely on the service provider being honest and implementing good security solution to the data processed and using good algorithms with good correlation as algorithms are often proprietary. 
+\par                
+The view that some aspects cannot be correctly quantified into metrics raises a question of whether decision making based on metrics is ethical. On one hand, we should strive to make the process of decision making to be objective and correct. On the other hand, all known methods for measuring such attributes as productivity have their limitations. This means that metrics do not always correctly reflect the reality and thus decision might be incorrect. As well as that all the methods are developed by humans and thus are full of bugs and errors. This especially applies to automated measurement tools such as those described in Tools Available section (\ref{sec:Platforms}). This leads to an issue of measuring the quality of the tool indented to measure the other tools/processes/engineers.
 
-Knowledge that decision are being made based on some specific metrics can provoke some people to try and take advantage of weaknesses of the algorithm being used. This can lead to an "arms race" between measuring body and the people being measured. 
+Knowledge that decisions are being made based on some specific metrics can also provoke some people to try and take advantage of weaknesses of the algorithm being used. This can lead to an "arms race" between measuring body and the people being measured. 
+
+I believe that a solution to many issues is transparency. The employer needs to be transparent about what is measured, how it is measured, how it is further processed and how a final result is being used. Every part of the method used to for example calculate productivity metrics needs to have a clear scientific justification. Every part of the measurement pipeline should be under control of both employees and managers. Every developer should have ability to protest against an aspect of the measurement pipeline. In summary, the measurement pipeline should be a collective asset that should bring a clear value to every participant - both engineers and managers. Otherwise, it will lead to unhappiness, feeling of being restricted and being under full control, questions about ethics. Software engineering is to some extent a creative job where happiness directly affect productivity.\cite{Graziotin2019}
+
+
+%Improving productivity requires explaining the factors that affect it, but that requires qualitative insights into team behavior.
+
 
 
 \section{Conclusion}
