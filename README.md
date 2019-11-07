@@ -1,6 +1,6 @@
 # CS3012 - Software Engineering @ TCD 2019/2020
 
-## LCA - Lowest Common Ancestor [![volkswagen status](https://tcd.ie)](https://github.com/auchenberg/volkswagen)
+## LCA - Lowest Common Ancestor [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://tcd.ie)
 
 ### Prerequisites
 
@@ -46,3 +46,15 @@ Development branch: _feature--biography-essay_.
 Quick links:
 
 * [Essay PDF](/biography-essay/biography-essay.pdf)
+
+## Measuring Engineering - a report
+
+Development branch: _feature--measuring-engineering-report_.
+
+Commit identifying current most-up-date submission: 8e1a72ef371513079a052161aec795d82cedfa23
+
+Release/Tag identifying most-up-date submission: v4.0 
+
+Quick links:
+
+* [Report PDF](/measuring-engineering-report/measuring-engineering-report.pdf)
